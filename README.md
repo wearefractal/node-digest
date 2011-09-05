@@ -3,7 +3,7 @@
 
 ## Installation
     
-To install Protege, use [npm](http://github.com/isaacs/npm):
+To install node-digest, use [npm](http://github.com/isaacs/npm):
 
         $ npm install digest
 
