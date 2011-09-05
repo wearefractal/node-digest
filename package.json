@@ -1,16 +1,17 @@
 {
-   "name":"APPNAME",
-   "description":"Nothing here yet",
+   "name":"digest",
+   "description":"HTTP Digest authentication for NodeJS",
    "version":"0.0.1",
-   "homepage":"http://github.com/Contra/APPNAME",
-   "repository":"git://github.com/Contra/APPNAME.git",
+   "homepage":"http://github.com/Contra/node-digest",
+   "repository":"git://github.com/Contra/node-digest.git",
    "author":"Contra <contra@australia.edu> (http://wearefractal.com/)",
    "main":"./lib/main.coffee",
    
    "dependencies":{
       "coffee-script":"*",
       "colors":"*",
-      "protege":"*"
+      "protege":"*",
+      "hashlib":"*"
    },
    "engines":{
       "node":">= 0.4.0"
@@ -18,7 +19,7 @@
    "licenses":[
       {
          "type":"MIT",
-         "url":"http://github.com/Contra/APPNAME/raw/master/LICENSE"
+         "url":"http://github.com/Contra/node-digest/raw/master/LICENSE"
       }
    ]
 }

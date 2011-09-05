@@ -1,11 +1,11 @@
-**Nothing here yet**
+**node-digest is a library to make HTTP Digest authentication easy in NodeJS**
 
 
 ## Installation
     
 To install Protege, use [npm](http://github.com/isaacs/npm):
 
-        $ npm install -g APPNAME
+        $ npm install digest
 
 ## Usage
 
@@ -13,7 +13,7 @@ Nothing here yet
 
 ## Examples
 
-You can view further examples in the [example folder.](https://github.com/Contra/APPNAME/tree/master/examples)
+You can view further examples in the [example folder.](https://github.com/Contra/node-digest/tree/master/examples)
 
 ## Contributors
 
