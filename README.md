@@ -33,7 +33,7 @@ server.listen(8080);
 ```
 ## Examples
 
-You can view further examples in the [example folder.](https://github.com/Contra/node-digest/tree/master/examples)
+You can view further examples in the [example folder.](https://github.com/wearefractal/node-digest/tree/master/examples)
 
 ## Contributors
 
@@ -43,7 +43,7 @@ You can view further examples in the [example folder.](https://github.com/Contra
 
 (MIT License)
 
-Copyright (c) 2011 Contra <contra@australia.edu>
+Copyright (c) 2011 Fractal <contact@wearefractal.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

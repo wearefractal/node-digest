@@ -2,7 +2,7 @@
 
 ### Minor
 
-  * Nothing here yet
+  * Support for multiple logins
 
 ### Major
 
