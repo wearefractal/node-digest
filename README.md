@@ -9,8 +9,28 @@ To install Protege, use [npm](http://github.com/isaacs/npm):
 
 ## Usage
 
-Nothing here yet
+Coffeescript:
 
+```
+require 'digest'  
+
+server = digest.createServer 'username', 'password', (req, res) ->
+  res.writeHead 200, 'Content-Type': 'text/plain'
+  res.end 'Hello world! You are authenticated!'
+server.listen 8080
+```
+
+Javascript:
+
+```
+require('digest');
+
+var server = digest.createServer('username', 'password', function(req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello world! You are authenticated!');
+});
+server.listen(8080);
+```
 ## Examples
 
 You can view further examples in the [example folder.](https://github.com/Contra/node-digest/tree/master/examples)
