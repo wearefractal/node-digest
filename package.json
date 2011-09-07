@@ -10,7 +10,7 @@
    "dependencies":{
       "coffee-script":"*",
       "colors":"*",
-      "protege":"*",
+      "protege":">= 0.0.7",
       "hashlib":"*"
    },
    "engines":{
