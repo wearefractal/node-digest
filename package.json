@@ -1,7 +1,7 @@
 {
    "name":"digest",
    "description":"HTTP Digest authentication for NodeJS",
-   "version":"0.0.2",
+   "version":"0.0.3",
    "homepage":"http://github.com/wearefractal/node-digest",
    "repository":"git://github.com/wearefractal/node-digest.git",
    "author":"Fractal <contact@wearefractal.com> (http://wearefractal.com/)",

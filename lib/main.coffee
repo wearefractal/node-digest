@@ -4,7 +4,6 @@
 require 'protege'
 http = require 'http'
 config = require './config'
-log = require './logger'
 hashlib = require 'hashlib'
 
 nonces = {}
