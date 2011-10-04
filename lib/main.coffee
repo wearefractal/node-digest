@@ -1,6 +1,4 @@
-## I looked over https://github.com/thedjinn/node-http-digest while making this and used a lot of code
-## Thanks djinn!
-  
+require('coffee-script');
 require 'protege'
 http = require 'http'
 config = require './config'
@@ -15,22 +13,22 @@ parseHeader = (header) ->
     return false
   unless header.startsWithIgnoreCase 'digest'
     return false
-      
-  out = {}   
+
+  out = {}
   # Remove 'Digest ' from the string
   header = header.downcase().replace 'digest ', ''
   chunks = header.split ', '
-  
+
   for piece in chunks
     val = piece.trim().split '='
     if val.length < 2
       return false
     out[val[0]] = val[1].replaceAll '"', ''
   return out
-        
+
 authenticate = (request, header, username, password) ->
   authinfo = parseHeader header
-  
+
   # Check for inconsistencies
   if !authinfo
     return false
@@ -42,7 +40,7 @@ authenticate = (request, header, username, password) ->
     return false
   if authinfo.username isnt username
     return false
-      
+
   userAuth = authinfo.username + ':' + config.realm + ':' + password
   methodAuth = request.method + ':' + authinfo.uri
 
@@ -57,10 +55,10 @@ authenticate = (request, header, username, password) ->
 
 digest = (request, response, username, password, callback) ->
   authenticated = false
-  
+
   if request.headers.authorization?
     header = request.headers.authorization
-    
+
   if authenticate request, header, username, password
     callback request, response
   else
@@ -75,3 +73,4 @@ exports.createServer = (username, password, callback) ->
   @server = http.createServer (request, response) ->
     digest request, response, username, password, callback
   return @server
+
