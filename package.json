@@ -1,16 +1,15 @@
 {
    "name":"digest",
    "description":"HTTP Digest authentication for NodeJS",
-   "version":"0.0.4",
+   "version":"0.0.5",
    "homepage":"http://github.com/wearefractal/node-digest",
    "repository":"git://github.com/wearefractal/node-digest.git",
    "author":"Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
-   "main":"./lib/main.coffee",
+   "main":"./lib/main.js",
 
    "dependencies":{
       "coffee-script":"*",
-      "protege":">= 0.0.7",
-      "hashlib":"*"
+      "MD5":"*"
    },
    "engines":{
       "node":">= 0.4.0"

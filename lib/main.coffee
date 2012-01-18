@@ -1,8 +1,7 @@
 require('coffee-script');
-require 'protege'
 http = require 'http'
 config = require './config'
-hashlib = require 'hashlib'
+md5 = require 'MD5'
 
 nonces = {}
 
@@ -11,19 +10,20 @@ parseHeader = (header) ->
   # Check for inconsistencies
   if !header?
     return false
-  unless header.startsWithIgnoreCase 'digest'
+  unless header.toLowerCase().indexOf(String('digest').toLowerCase()) is 0
     return false
 
   out = {}
   # Remove 'Digest ' from the string
-  header = header.downcase().replace 'digest ', ''
+  header = header.toLowerCase().replace 'digest ', ''
   chunks = header.split ', '
 
   for piece in chunks
     val = piece.trim().split '='
     if val.length < 2
       return false
-    out[val[0]] = val[1].replaceAll '"', ''
+    val[1] = val[1].replace('"', '') for x in val[1]
+    out[val[0]] = val[1]
   return out
 
 authenticate = (request, header, username, password) ->
@@ -45,12 +45,12 @@ authenticate = (request, header, username, password) ->
   methodAuth = request.method + ':' + authinfo.uri
 
   if !authinfo.qop?
-    digest = hashlib.md5 [hashlib.md5(userAuth), authinfo.nonce, hashlib.md5(methodAuth)].join(':')
+    digest = md5 [md5(userAuth), authinfo.nonce, md5(methodAuth)].join(':')
   else
     if authinfo.nc <= nonces[authinfo.nonce].count
       return false
     nonces[authinfo.nonce].count = authinfo.nc
-    digest = hashlib.md5 [hashlib.md5(userAuth), authinfo.nonce, authinfo.nc, authinfo.cnonce, authinfo.qop, hashlib.md5(methodAuth)].join(':')
+    digest = md5 [md5(userAuth), authinfo.nonce, authinfo.nc, authinfo.cnonce, authinfo.qop, md5(methodAuth)].join(':')
   return digest is authinfo.response
 
 digest = (request, response, username, password, callback) ->
@@ -62,10 +62,10 @@ digest = (request, response, username, password, callback) ->
   if authenticate request, header, username, password
     callback request, response
   else
-    nonce = hashlib.md5 new Date().getTime() + config.key
+    nonce = md5 new Date().getTime() + config.key
     nonces[nonce] = count: 0
     setTimeout nonces.remove, config.timeout, nonce
-    opaque = hashlib.md5 config.opaque
+    opaque = md5 config.opaque
     response.writeHead 401, {'WWW-Authenticate': 'Digest realm="' + config.realm + '", qop="auth", nonce="' + nonce + '", opaque="' + opaque + '"'}
     response.end '401 Unauthorized'
 
