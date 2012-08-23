@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/wearefractal/node-digest.png)](http://travis-ci.org/wearefractal/node-digest)
 **node-digest is a library to make HTTP Digest authentication easy in NodeJS**
 
 
